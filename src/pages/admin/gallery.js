@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { supabase } from "../../../lib/supabaseClient"; // Ensure supabaseClient is correctly set up
+import { uploadFileToSupabase } from "@/pages/api/gallery/supabase.UploadFile"; // Import API function
+import { FaCloudUploadAlt } from "react-icons/fa"; // Import upload icon
 
 export default function FileUploader() {
   const [file, setFile] = useState(null);
@@ -12,7 +13,7 @@ export default function FileUploader() {
     setFile(e.target.files[0]);
   };
 
-  // Upload file to Supabase bucket and get public URL
+  // Upload file using the separate API function
   const handleFileUpload = async () => {
     if (!file) {
       setUploadMessage("Please select a file first.");
@@ -23,54 +24,72 @@ export default function FileUploader() {
     setUploadMessage("");
 
     try {
-      // Generate a unique file name
-      const fileName = `${Date.now()}-${file.name}`;
-
-      // Upload the file to the Supabase bucket
-      const { data, error } = await supabase.storage
-        .from("uploads") // Ensure 'uploads' is your bucket name
-        .upload(fileName, file, { cacheControl: "3600", upsert: false });
-
-      if (error) {
-        throw error;
-      }
-
-      // Get the public URL of the uploaded file
-      const { data: publicURLData } = supabase.storage
-        .from("uploads")
-        .getPublicUrl(fileName);
-
+      const publicUrl = await uploadFileToSupabase(file); // Call API function
       setUploading(false);
       setUploadMessage("File uploaded successfully!");
-      setPublicUrlSupa(publicURLData.publicUrl);
-      console.log("URL:", publicURLData.publicUrl);
+      setPublicUrlSupa(publicUrl); // Store the public URL in state
+      console.log("Public URL:", publicUrl);
     } catch (error) {
       setUploading(false);
-      setUploadMessage(`Error uploading file: ${error.message}`);
+      setUploadMessage(error.message);
     }
   };
 
   return (
-    <div>
-      <h1>File Upload</h1>
-      <input
-        type="file"
-        onChange={handleFileChange}
-        accept="*/*" // Allow any type of file
-      />
-      <button onClick={handleFileUpload} disabled={uploading}>
-        {uploading ? "Uploading..." : "Upload File"}
-      </button>
+    <div className="flex justify-center items-center min-h-screen bg-gray-900">
+      <div className="bg-gray-800 p-6 rounded-2xl shadow-lg w-96 text-white">
+        <h2 className="text-xl font-semibold mb-4 text-center">
+          Upload a File
+        </h2>
 
-      {uploadMessage && <p>{uploadMessage}</p>}
-      {publicUrlSupa && (
-        <div>
-          <p>Public URL:</p>
-          <a href={publicUrlSupa} target="_blank" rel="noopener noreferrer">
-            {publicUrlSupa}
-          </a>
+        {/* File Input */}
+        <div className="border-2 border-dashed border-gray-500 rounded-lg p-6 text-center">
+          <label className="cursor-pointer flex flex-col items-center">
+            <FaCloudUploadAlt className="text-4xl text-blue-400 mb-2" />
+            <span className="text-sm text-gray-400">
+              {file ? file.name : "Click to select a file"}
+            </span>
+            <input type="file" onChange={handleFileChange} className="hidden" />
+          </label>
         </div>
-      )}
+
+        {/* Upload Button */}
+        <button
+          onClick={handleFileUpload}
+          disabled={uploading}
+          className={`mt-4 w-full py-2 rounded-lg font-medium text-lg 
+          ${
+            uploading
+              ? "bg-gray-600"
+              : "bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800"
+          }
+          transition duration-300`}
+        >
+          {uploading ? "Uploading..." : "Upload File"}
+        </button>
+
+        {/* Upload Message */}
+        {uploadMessage && (
+          <p className="text-sm text-gray-300 mt-3 text-center">
+            {uploadMessage}
+          </p>
+        )}
+
+        {/* Display Public URL */}
+        {publicUrlSupa && (
+          <div className="mt-4 bg-gray-700 p-2 rounded-lg text-sm text-center">
+            <p>File Uploaded:</p>
+            <a
+              href={publicUrlSupa}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:underline"
+            >
+              {publicUrlSupa}
+            </a>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
