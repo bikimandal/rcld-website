@@ -1,0 +1,17 @@
+{
+  "id": 2,
+  "title": "Diploma in Computer Science & Technology (DCST)",
+  "image": "/images/courses/dcst.jpg",
+  "description": "A professional diploma program covering programming, networking, and database management.",
+  "fees": "8,000",
+  "duration": "1 Year",
+  "applications": [
+    "Software Development",
+    "Networking Fundamentals",
+    "Database Management",
+    "System Administration"
+  ],
+  "prerequisites": [
+    "Basic Computer Knowledge"
+  ]
+}

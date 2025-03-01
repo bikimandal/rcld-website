@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "title": "DOM (Diploma in Office Management)",
+  "image": "/images/courses/dom.jpg",
+  "description": "Learn how to manipulate the Document Object Model (DOM) using JavaScript and enhance interactivity on web pages.",
+  "fees": "₹2,500",
+  "duration": "1 Year",
+  "applications": [
+    "Dynamic HTML modifications",
+    "Handling user interactions",
+    "Creating interactive web pages",
+    "Building single-page applications"
+  ],
+  "prerequisites": [
+    "Basic understanding of HTML",
+    "Fundamental JavaScript knowledge"
+  ]
+}

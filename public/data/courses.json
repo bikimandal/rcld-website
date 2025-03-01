@@ -1,0 +1,173 @@
+[
+  {
+    "id": 1,
+    "abbreviation": "dom",
+    "title": "DOM (Diploma in Office Management)",
+    "description": "This course covers essential office management skills, including MS-DOS, Windows, MS-Office suite, graphic design tools like CorelDRAW and Photoshop, accounting software such as Tally ERP 9, and networking fundamentals. It also includes hardware troubleshooting and software installation.",
+    "subjects": [
+      "MS-DOS",
+      "Windows",
+      "MS-Office (Word, Excel, PowerPoint, Access)",
+      "CorelDRAW",
+      "Photoshop",
+      "Tally ERP 9",
+      "Hardware & Troubleshooting",
+      "Software Installation",
+      "Networking",
+      "Internet Basics"
+    ],
+    "fees": "7000",
+    "duration": "1 Year"
+  },
+  {
+    "id": 2,
+    "abbreviation": "dcst",
+    "title": "DCST (Diploma in Computer Science and Technology)",
+    "description": "Gain expertise in programming languages like C, JavaScript, Python, and SQL. This course also covers HTML for web development, MS-Office tools, and essential computer fundamentals.",
+    "subjects": [
+      "Computer Fundamentals",
+      "Windows",
+      "MS-Office",
+      "C Programming",
+      "JS (JavaScript)",
+      "HTML (HyperText Markup Language)",
+      "Python",
+      "SQL",
+      "Internet"
+    ],
+    "fees": "7000",
+    "duration": "1 Year"
+  },
+  {
+    "id": 3,
+    "abbreviation": "cao",
+    "title": "CAO (Certificate in Accounts Operation)",
+    "description": "A focused course on accountancy and financial software, covering Tally ERP 9.0, FACT, and MS-Office applications for accounting operations.",
+    "subjects": [
+      "Computer Fundamentals",
+      "Windows",
+      "Concepts of Accountancy",
+      "Tally (ERP 9.0)",
+      "Fact (Accounting Software)",
+      "Internet"
+    ],
+    "fees": "5500",
+    "duration": "6 Months"
+  },
+  {
+    "id": 4,
+    "abbreviation": "dca",
+    "title": "DCA (Diploma in Computer Application)",
+    "description": "Learn essential computer applications, including MS-DOS, Windows, MS-Office, Blue Java, HTML, and Internet usage, to build a strong foundation in computing.",
+    "subjects": [
+      "Computer Fundamentals",
+      "MS-DOS",
+      "Windows",
+      "MS-Office",
+      "Blue Java",
+      "HTML",
+      "Internet"
+    ],
+    "fees": "4500",
+    "duration": "1 Year"
+  },
+  {
+    "id": 5,
+    "abbreviation": "cfa",
+    "title": "CFA (Certificate in Financial Accounting)",
+    "description": "This course provides a foundation in financial accounting, covering key concepts of accountancy and practical skills in Tally ERP 9.0 and MS-Office applications.",
+    "subjects": [
+      "Computer Fundamentals",
+      "Windows",
+      "MS-Word",
+      "Concept of Accountancy",
+      "Tally ERP 9.0"
+    ],
+    "fees": "3000",
+    "duration": "6 Months"
+  },
+  {
+    "id": 6,
+    "abbreviation": "cca",
+    "title": "CCA (Certificate in Computer Application)",
+    "description": "An introductory course covering essential computer applications such as MS-DOS, Windows, MS-Office, and basic Internet usage.",
+    "subjects": [
+      "Computer Fundamentals",
+      "MS-DOS",
+      "Windows",
+      "MS-Office",
+      "Internet"
+    ],
+    "fees": "2500",
+    "duration": "6 Months"
+  },
+  {
+    "id": 7,
+    "abbreviation": "dcap",
+    "title": "DCAP (Diploma in Computer Accounts Professional)",
+    "description": "This course covers advanced accounting software, corporate banking, taxation, and professional accounting practices using Tally and Accord.",
+    "subjects": [
+      "Computer Fundamentals",
+      "Windows",
+      "MS-Office",
+      "Concept of Accountancy",
+      "Tally (With project)",
+      "Accord",
+      "Corporate Banking",
+      "Taxation",
+      "Internet"
+    ],
+    "fees": "8000",
+    "duration": "1 Year"
+  },
+  {
+    "id": 8,
+    "abbreviation": "cdeo",
+    "title": "CDEO (Certificate in Data Entry Operator)",
+    "description": "Learn the fundamentals of data entry operations, including MS-DOS, MS-Office tools, and basic Internet usage, to build proficiency in clerical tasks.",
+    "subjects": [
+      "Computer Fundamentals",
+      "MS-DOS",
+      "MS-Office (Word, Excel)",
+      "Internet"
+    ],
+    "fees": "1500",
+    "duration": "3 Months"
+  },
+  {
+    "id": 9,
+    "abbreviation": "dche",
+    "title": "DCHE (Diploma in Computer Hardware Engineering)",
+    "description": "This course provides in-depth knowledge of computer hardware, including motherboard, HDD, FDD, circuit drawing, software installation, and PC assembling.",
+    "subjects": [
+      "Computer Fundamentals",
+      "Analogue and Digital Electronics",
+      "SMPS",
+      "Monitor",
+      "Motherboard",
+      "HDD",
+      "FDD",
+      "D/boards",
+      "Software Installation & PC Assembling",
+      "Gates/Circuit Drawing"
+    ],
+    "fees": "6500",
+    "duration": "6 Months"
+  },
+  {
+    "id": 10,
+    "abbreviation": "cdtp",
+    "title": "CDTP (Certificate in Desktop Publishing)",
+    "description": "Learn professional desktop publishing using CorelDRAW, Adobe Photoshop, Adobe PageMaker, and MS-Word to create visually appealing documents and designs.",
+    "subjects": [
+      "Computer Fundamentals",
+      "Windows",
+      "MS-Word",
+      "CorelDRAW",
+      "Adobe Photoshop",
+      "Adobe PageMaker"
+    ],
+    "fees": "3000",
+    "duration": "6 Months"
+  }
+]
