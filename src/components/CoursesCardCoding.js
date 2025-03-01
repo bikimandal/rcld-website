@@ -9,7 +9,6 @@ const CoursesCardCard = ({ course }) => {
         <span className="text-white text-3xl text-center font-extrabold uppercase inset-0 hover:scale-150 transition transform duration-300">
           {course.abbreviation.replace(/-/g, " ")}
         </span>
-        {/* <div className="absolute inset-0 bg-black bg-opacity-10 hover:bg-opacity-20 transition duration-300"></div> */}
       </div>
 
       {/* Course Content */}

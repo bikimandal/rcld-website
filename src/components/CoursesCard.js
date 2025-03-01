@@ -24,7 +24,6 @@ const CoursesCard = ({ course }) => {
         <span className="text-white text-6xl font-extrabold uppercase inset-0 hover:scale-150 transition transform duration-300">
           {course.abbreviation}
         </span>
-        {/* <div className="absolute inset-0 bg-black bg-opacity-10 hover:bg-opacity-20 transition duration-300"></div> */}
       </div>
 
       {/* Course Content */}
@@ -54,7 +53,6 @@ const CoursesCard = ({ course }) => {
 
         {/* Learn More Button */}
         <div className="mt-auto">
-          {/* <Link href={`/rcld-courses/${course.abbreviation}`}> */}
           <button
             onClick={handelLearnMoreButtonClick}
             className="w-full py-2 my-5 flex items-center justify-center gap-2 bg-amber-500/80 text-gray-800 font-semibold rounded-lg shadow-md hover:scale-95 hover:shadow-xl transition duration-300 cursor-pointer group"

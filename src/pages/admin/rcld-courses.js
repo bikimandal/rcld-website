@@ -12,7 +12,7 @@ function RcldCourses() {
   const [showModal, setShowModal] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editableRow, setEditableRow] = useState(null); // Track which row is editable
+  const [editableRow, setEditableRow] = useState(null);
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [idtodelete, setidToDelete] = useState("");
@@ -34,7 +34,7 @@ function RcldCourses() {
                 ? JSON.parse(course.subjects)
                 : course.subjects,
           }))
-          .sort((a, b) => a.id - b.id); // Sorting directly here
+          .sort((a, b) => a.id - b.id);
 
         setCourses(formattedData);
         setRefreshing(false);
@@ -42,7 +42,6 @@ function RcldCourses() {
       });
   };
 
-  // console.log(sortObjectById(courses));
   useEffect(() => {
     refreshData();
   }, []);
@@ -53,7 +52,7 @@ function RcldCourses() {
   };
 
   const handleEdit = (id) => {
-    setEditableRow(id); // Set clicked row as editable
+    setEditableRow(id);
   };
 
   const handleSave = async () => {
@@ -61,7 +60,6 @@ function RcldCourses() {
 
     setSaving(true);
 
-    // Find course either by index or ID
     const updatedCourse =
       courses.find((course) => course.id === editableRow) ||
       courses[editableRow];
@@ -72,12 +70,11 @@ function RcldCourses() {
       return;
     }
 
-    // Ensure `subjects` is stored as an array in the database
     const formattedCourse = {
       ...updatedCourse,
       subjects: Array.isArray(updatedCourse.subjects)
         ? updatedCourse.subjects
-        : updatedCourse.subjects.split(",").map((s) => s.trim()), // Convert CSV string to array
+        : updatedCourse.subjects.split(",").map((s) => s.trim()),
     };
 
     try {
@@ -96,7 +93,7 @@ function RcldCourses() {
       }
 
       setSaving(false);
-      setEditableRow(null); // Exit edit mode
+      setEditableRow(null);
 
       toast.success("Update Successful", {
         theme: "dark",
@@ -183,7 +180,6 @@ function RcldCourses() {
   };
 
   const handleDelete = async (id) => {
-    // setIsModalOpen(true);
     setidToDelete(id);
     setShowModal(true);
   };
@@ -203,11 +199,11 @@ function RcldCourses() {
 
   const getAbbreviationById = (id, courses) => {
     const course = courses.find((course) => course.id === id);
-    return course ? course.abbreviation : null; // Return abbreviation if found, else return null
+    return course ? course.abbreviation : null;
   };
   //
   const getMaxId = (courses) => {
-    if (!courses.length) return 1; // Return 1 if there are no courses (starting ID)
+    if (!courses.length) return 1;
     return Math.max(...courses.map((course) => course.id)) + 1;
   };
 
@@ -270,15 +266,13 @@ function RcldCourses() {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (tableRef.current && !tableRef.current.contains(event.target)) {
-        setEditableRow(null); // Reset editable row
+        setEditableRow(null);
       }
     };
 
-    // Add event listeners
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleKeyDown);
 
-    // Clean up event listeners
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
@@ -358,7 +352,7 @@ function RcldCourses() {
                         onChange={(e) =>
                           handleInputChange(e, index, "abbreviation")
                         }
-                        readOnly={editableRow !== course.id} // Only editable for selected row
+                        readOnly={editableRow !== course.id}
                         className={`w-full p-2 border border-gray-500 rounded-md transition-all cursor-default ${
                           editableRow === course.id
                             ? "bg-yellow-200 dark:bg-yellow-600 text-white cursor-text"

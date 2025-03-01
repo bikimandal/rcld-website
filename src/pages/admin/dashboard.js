@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { FiBookOpen, FiImage, FiSettings, FiShare2 } from "react-icons/fi";
-import withAuth from "../../../utils/withAuth"; // Import the withAuth HOC
+import withAuth from "../../../utils/withAuth";
 import NavBar from "@/components/NavBar";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
@@ -44,7 +44,6 @@ function Dashboard() {
           session?.user?.user_metadata?.display_name || "User";
         setUserName(displayName);
 
-        // ✅ Show toast only if the user is visiting for the first time
         const hasVisited = localStorage.getItem("hasVisitedDashboard");
         if (!hasVisited) {
           toast(`🦄 Welcome ${displayName}!`, {
@@ -58,11 +57,11 @@ function Dashboard() {
             theme: "dark",
           });
 
-          localStorage.setItem("hasVisitedDashboard", "true"); // ✅ Mark as visited
+          localStorage.setItem("hasVisitedDashboard", "true");
         }
       } catch (error) {
         console.error("Error fetching session data:", error);
-        setUserName("User"); // ✅ Fallback value
+        setUserName("User");
       }
     };
 

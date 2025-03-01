@@ -208,11 +208,11 @@ function PersonalisedCourses() {
 
   const getAbbreviationById = (id, courses) => {
     const course = courses.find((course) => course.id === id);
-    return course ? course.abbreviation : null; // Return abbreviation if found, else return null
+    return course ? course.abbreviation : null;
   };
   //
   const getMaxId = (courses) => {
-    if (!courses.length) return 1; // Return 1 if there are no courses (starting ID)
+    if (!courses.length) return 1;
     return Math.max(...courses.map((course) => course.id)) + 1;
   };
 

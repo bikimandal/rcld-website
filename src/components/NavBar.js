@@ -40,32 +40,6 @@ export default function NavBar() {
     { name: "Personalised Courses", href: "/personalised-courses" },
   ];
 
-  // useEffect(() => {
-  //   const adminSession = localStorage.getItem("SessionData");
-  //   if (adminSession) {
-  //     const parsedSession = JSON.parse(adminSession);
-  //     setIsAdminLoggedIn(parsedSession.isLoggedIn);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   async function fetchAdminSession() {
-  //     try {
-  //       const data = await getSessionKey(); // Fetch session data
-  //       if (!data) return; // Prevent errors if data is null
-
-  //       const parsedSession = JSON.parse(data); // Parse JSON
-  //       console.log("Admin Session:", parsedSession);
-  //       // setIsAdminLoggedIn(parsedSession?.isLoggedIn || false); // ✅ Set state safely
-
-  //     } catch (error) {
-  //       console.error("Error fetching session:", error);
-  //     }
-  //   }
-
-  //   fetchAdminSession();
-  // }, []);
-
   useEffect(() => {
     async function fetchSession() {
       try {
@@ -82,86 +56,6 @@ export default function NavBar() {
 
     fetchSession();
   }, []);
-
-  // const handleLogout = async () => {
-  //   setIsLogoutLoading(true);
-
-  //   const logoutPromise = new Promise(async (resolve, reject) => {
-  //     try {
-  //       // Retrieve session data from localStorage
-  //       const adminSession = localStorage.getItem("SessionData");
-
-  //       if (!adminSession) {
-  //         setIsLogoutLoading(false);
-  //         reject("No active session found. You are not logged in.");
-  //         return;
-  //       }
-
-  //       // Parse the session data to extract the access token
-  //       const session = JSON.parse(adminSession);
-  //       const token = session.access_token;
-
-  //       const response = await fetch("/api/auth/logout", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       });
-
-  //       if (response.ok) {
-  //         // Clear stored session data
-  //         localStorage.removeItem("SessionData");
-  //         setIsAdminLoggedIn(false);
-
-  //         // Log out the user from Supabase client-side
-  //         await supabase.auth.signOut();
-
-  //         resolve("Successfully logged out. Redirecting...");
-
-  //         setTimeout(() => {
-  //           window.location.href = "/"; // Redirect after toast
-  //         }, 2000);
-  //       } else {
-  //         reject("Logout failed. Please try again.");
-  //       }
-  //     } catch (error) {
-  //       reject("Error logging out. Check your connection.");
-  //     } finally {
-  //       setIsLogoutLoading(false);
-  //     }
-  //   });
-
-  //   // Display toast notifications
-  //   toast.promise(logoutPromise, {
-  //     pending: {
-  //       render: "Logging out...",
-  //       theme: "dark",
-  //     },
-  //     success: {
-  //       render({ data }) {
-  //         return data;
-  //       },
-  //       theme: "dark",
-  //       autoClose: 2000,
-  //       hideProgressBar: false,
-  //       closeOnClick: false,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //     },
-  //     error: {
-  //       render({ data }) {
-  //         return data;
-  //       },
-  //       theme: "dark",
-  //       autoClose: 4000,
-  //       hideProgressBar: false,
-  //       closeOnClick: false,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //     },
-  //   });
-  // };
 
   const handleLogout = async () => {
     setIsLogoutLoading(true);
@@ -204,7 +98,6 @@ export default function NavBar() {
 
       await removeSessionKey();
       localStorage.setItem("hasVisitedDashboard", "false");
-      // localStorage.removeItem("SessionData");
       setIsAdminLoggedIn(false);
       await supabase.auth.signOut();
 

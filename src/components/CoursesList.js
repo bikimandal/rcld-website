@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowRight } from "lucide-react";
 import SectionHeading from "./SectionHeading";
-import Spinner1 from "./spinners/Spinner1";
 import ExploreButton from "./ExploreButton ";
 
 const CoursesList = () => {

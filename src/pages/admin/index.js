@@ -4,11 +4,7 @@ import { FiUser, FiLock } from "react-icons/fi";
 import NavBar from "@/components/NavBar";
 import Spinner1 from "@/components/spinners/Spinner1";
 import { toast } from "react-toastify";
-import {
-  saveSessionKey,
-  getSessionKey,
-  removeSessionKey,
-} from "../../../lib/IndexedDb";
+import { saveSessionKey, getSessionKey } from "../../../lib/IndexedDb";
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -22,13 +18,13 @@ export default function AdminLogin() {
   useEffect(() => {
     async function checkSession() {
       try {
-        const data = await getSessionKey(); // Fetch session data (assumed to be JSON)
-        if (!data) return; // Prevent errors if data is null
+        const data = await getSessionKey();
+        if (!data) return;
 
-        const session = JSON.parse(data); // Parse JSON
+        const session = JSON.parse(data);
 
         if (session?.isLoggedIn) {
-          router.push("/admin/dashboard"); // ✅ Redirect if already logged in
+          router.push("/admin/dashboard");
         }
       } catch (error) {
         console.error("Error fetching session:", error);
@@ -44,80 +40,6 @@ export default function AdminLogin() {
       [e.target.name]: e.target.value,
     }));
   };
-
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   setError("");
-
-  //   const loginPromise = new Promise(async (resolve, reject) => {
-  //     try {
-  //       const res = await fetch("/api/auth/login", {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify(credentials),
-  //       });
-
-  //       const data = await res.json();
-
-  //       if (res.ok) {
-  //         // Store session token and user details
-  //         localStorage.setItem(
-  //           "SessionData",
-  //           JSON.stringify({
-  //             isLoggedIn: true,
-  //             user: data.user,
-  //             token: data.session.access_token,
-  //           })
-  //         );
-
-  //         resolve("Login successful! Redirecting...");
-  //         setTimeout(() => {
-  //           window.location.href = "/admin/dashboard"; // Redirect after toast
-  //         }, 2000);
-  //       } else {
-  //         setError(data.error || "Login failed");
-  //         reject(data.error || "Login failed. Please check your credentials.");
-  //       }
-  //     } catch (error) {
-  //       setError("Something went wrong. Please try again.");
-  //       reject("Network error! Please check your connection.");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   });
-
-  //   // Display toast notifications
-  //   toast.promise(loginPromise, {
-  //     pending: {
-  //       render: "Logging in...",
-  //       theme: "dark",
-  //     },
-  //     success: {
-  //       render({ data }) {
-  //         return data;
-  //       },
-  //       theme: "dark",
-  //       autoClose: 2000,
-  //       hideProgressBar: false,
-  //       closeOnClick: false,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //     },
-  //     error: {
-  //       render({ data }) {
-  //         return data;
-  //       },
-  //       theme: "dark",
-  //       autoClose: 4000,
-  //       hideProgressBar: false,
-  //       closeOnClick: false,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //     },
-  //   });
-  // };
-
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -140,15 +62,6 @@ export default function AdminLogin() {
       const data = await res.json();
 
       if (res.ok && data.session?.access_token) {
-        // localStorage.setItem(
-        //   "SessionData",
-        //   JSON.stringify({
-        //     isLoggedIn: true,
-        //     user: data.user,
-        //     token: data.session.access_token,
-        //   })
-        // );
-
         await saveSessionKey(
           JSON.stringify({
             isLoggedIn: true,
@@ -163,7 +76,6 @@ export default function AdminLogin() {
           autoClose: 2000,
         });
 
-        // Redirect smoothly
         setTimeout(async () => {
           await router.push("/admin/dashboard");
         }, 500);
@@ -174,7 +86,6 @@ export default function AdminLogin() {
           autoClose: 4000,
         });
 
-        // Ensure session data is cleared if login fails
         localStorage.removeItem("SessionData");
       }
     } catch (error) {

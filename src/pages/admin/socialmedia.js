@@ -108,7 +108,6 @@ const ContactTable = () => {
     }
   };
 
-  // This function handles keyboard events globally
   const handleKeyDown = async (event) => {
     if (event.key === "Escape") {
       setEditableRow(null);
@@ -120,20 +119,18 @@ const ContactTable = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (tableRef.current && !tableRef.current.contains(event.target)) {
-        setEditableRow(null); // Reset editable row
+        setEditableRow(null);
       }
     };
 
-    // Add event listeners
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleKeyDown);
 
-    // Clean up event listeners
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [editableRow, handleSave]); // Added handleSave to dependencies
+  }, [editableRow, handleSave]);
 
   return (
     <>
@@ -187,23 +184,9 @@ const ContactTable = () => {
                       {contact.id}
                     </td>
                     <td className="p-3 border border-gray-700 text-center">
-                      {/* <input
-                        type="text"
-                        value={contact.name}
-                        onChange={(e) => handleInputChange(e, index, "name")}
-                        readOnly={true}
-                        className="w-full p-2 border border-gray-500 rounded-md transition-all cursor-default bg-transparent"
-                      /> */}
                       {contact.name}
                     </td>
                     <td className="p-3 border border-gray-700 text-center">
-                      {/* <input
-                        type="text"
-                        value={contact.type}
-                        onChange={(e) => handleInputChange(e, index, "type")}
-                        readOnly={true}
-                        className="w-full p-2 border border-gray-500 rounded-md transition-all cursor-default bg-transparent"
-                      /> */}
                       {contact.type}
                     </td>
                     <td className="p-3 border border-gray-700">

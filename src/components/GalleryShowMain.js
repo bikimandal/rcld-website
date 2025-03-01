@@ -10,8 +10,8 @@ export default function GalleryPreview() {
     fetch("/data/gallery.json")
       .then((res) => res.json())
       .then((data) => {
-        const shuffled = data.sort(() => 0.5 - Math.random()); // Shuffle the array
-        setImages(shuffled.slice(0, 3)); // Pick the first 3 from shuffled array
+        const shuffled = data.sort(() => 0.5 - Math.random());
+        setImages(shuffled.slice(0, 3));
       });
   }, []);
 
