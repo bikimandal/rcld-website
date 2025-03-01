@@ -1,42 +1,69 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+.mulish-font {
+  font-family: "Mulish", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 886;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes scrollreverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+.animate-scroll-reverse {
+  animation: scrollreverse 20s linear infinite;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@keyframes move-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
+.move-left {
+  animation: move-right 5s linear infinite;
+}
+
+
+
+/* Custom Stylish Scrollbar */
+.stylish-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Width of vertical scrollbar */
+  height: 8px; /* Width of horizontal scrollbar */
+}
+
+.stylish-scrollbar::-webkit-scrollbar-track {
+  background: #1e293b; /* Dark track color */
+  border-radius: 10px;
+}
+
+.stylish-scrollbar::-webkit-scrollbar-thumb {
+  background: #22d3ee; /* Stylish scrollbar color */
+  border-radius: 10px;
+  border: 2px solid #1e293b; /* Space around scrollbar */
+}
+
+.stylish-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #22d3ee; /* Lighter color on hover */
+}
+

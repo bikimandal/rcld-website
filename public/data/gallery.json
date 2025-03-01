@@ -1,0 +1,53 @@
+[
+    {
+      "id": 1,
+      "url": "/images/gallery/image1.jpg",
+      "caption": "Computer Lab"
+    },
+    {
+      "id": 2,
+      "url": "/images/gallery/image2.jpg",
+      "caption": "Coding Session"
+    },
+    {
+      "id": 3,
+      "url": "/images/gallery/image3.jpg",
+      "caption": "Annual Tech Fest"
+    },
+    {
+      "id": 4,
+      "url": "/images/gallery/image4.jpg",
+      "caption": "Annual Tech Fest"
+    },
+    {
+      "id": 5,
+      "url": "/images/gallery/image5.jpg",
+      "caption": "Annual Tech Fest"
+    },
+    {
+      "id": 6,
+      "url": "/images/gallery/image6.jpg",
+      "caption": "Annual Tech Fest"
+    },
+    {
+      "id": 7,
+      "url": "/images/gallery/image7.jpg",
+      "caption": "Annual Tech Fest"
+    },
+    {
+      "id": 8,
+      "url": "/images/gallery/image8.jpg",
+      "caption": "Annual Tech Fest"
+    },
+    {
+      "id": 9,
+      "url": "/images/gallery/image9.jpg",
+      "caption": "Annual Tech Fest"
+    },
+    {
+      "id": 10,
+      "url": "/images/gallery/image10.jpg",
+      "caption": "Annual Tech Fest"
+    }
+  ]
+  

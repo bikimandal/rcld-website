@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "abbreviation": "coding-for-kids",
+      "title": "Coding For Kids",
+      "description": "This course introduces kids to the world of coding through interactive and engaging lessons. It covers visual programming with Scratch, web development basics using HTML and CSS, and fundamental programming concepts in Java, Python, and JavaScript.",
+      "subjects": [
+        "Scratch",
+        "HTML",
+        "CSS",
+        "Java",
+        "Python",
+        "JavaScript"
+      ],
+      "fees": "7000",
+      "duration": "1 Year"
+    },
+    {
+      "id": 2,
+      "abbreviation": "english-foundation-course",
+      "title": "English Foundation Course",
+      "description": "This course is designed to build a strong foundation in English, focusing on phonetics, fluent speaking, grammar, vocabulary, and practical communication skills. It enhances confidence in both written and spoken English.",
+      "subjects": [
+        "Phonetic Speaking",
+        "Fluent English",
+        "Grammar & Sentence Structure",
+        "Pronunciation & Accent Training",
+        "Vocabulary Building",
+        "Conversational English"
+      ],
+      "fees": "7000",
+      "duration": "1 Year"
+    },
+    {
+      "id": 3,
+      "abbreviation": "school-course",
+      "title": "School Course",
+      "description": "This course is designed to build a strong foundation in English, focusing on phonetics, fluent speaking, grammar, vocabulary, and practical communication skills. It enhances confidence in both written and spoken English.",
+      "subjects": [
+        "Guidance on Computer Subject",
+        "Fluent English",
+        "Grammar & Sentence Structure",
+        "Pronunciation & Accent Training",
+        "Vocabulary Building",
+        "Conversational English"
+      ],
+      "fees": "7000",
+      "duration": "1 Year"
+    }
+  ]
+  
