@@ -6,8 +6,11 @@ export const uploadFileToSupabase = async (file) => {
       throw new Error("No file selected");
     }
 
+    // Sanitize the file name: replace spaces with "-"
+    const sanitizedFileName = file.name.replace(/\s+/g, "-");
+
     // Generate a unique file name
-    const fileName = `${Date.now()}-${file.name}`;
+    const fileName = `${Date.now()}-${sanitizedFileName}`;
 
     // Upload the file to the Supabase bucket
     const { data, error } = await supabase.storage

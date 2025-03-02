@@ -38,13 +38,13 @@ const CourseDetails = ({ course }) => {
           <div className="mt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center text-lg sm:text-xl font-semibold">
             <p className="text-blue-600 dark:text-blue-400">
               💰 Fees: ₹{" "}
-              <span className="font-bold text-amber-50">
+              <span className="font-bold text-blue-600">
                 {course.fees ? course.fees : "N/A"}/-
               </span>
             </p>
             <p className="text-green-600 dark:text-green-400 mt-2 sm:mt-0">
               ⏳ Duration:{" "}
-              <span className="font-abold text-amber-50">
+              <span className="font-abold text-green-600">
                 {course.duration ? course.duration : "N/A"}
               </span>
             </p>

@@ -406,7 +406,7 @@ function RcldCourses() {
                     </td>
                     <td className="p-3 border border-gray-700">
                       <input
-                        type="text"
+                        type="number"
                         value={course.fees}
                         onChange={(e) => handleInputChange(e, index, "fees")}
                         readOnly={editableRow !== course.id}
