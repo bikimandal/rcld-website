@@ -65,7 +65,11 @@ function RcldCourses() {
       courses[editableRow];
 
     if (!updatedCourse) {
-      toast.error("Invalid course selection!");
+      toast.error("Invalid course selection!", {
+        theme: "dark",
+        autoClose: 3000,
+        pauseOnHover: false,
+      });
       setSaving(false);
       return;
     }
@@ -98,10 +102,7 @@ function RcldCourses() {
       toast.success("Update Successful", {
         theme: "dark",
         autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
+        pauseOnHover: false,
       });
     } catch (error) {
       console.error("Error updating course:", error);
@@ -111,10 +112,7 @@ function RcldCourses() {
         {
           theme: "dark",
           autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
+          pauseOnHover: false,
         }
       );
 
@@ -159,6 +157,7 @@ function RcldCourses() {
       pending: {
         render: "Deleting course...",
         theme: "dark",
+        pauseOnHover: false,
       },
       success: {
         render({ data }) {
@@ -188,12 +187,8 @@ function RcldCourses() {
     toast.success("Data Refreshed!", {
       position: "top-right",
       autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
       theme: "dark",
+      pauseOnHover: false,
     });
   };
 
@@ -235,10 +230,7 @@ function RcldCourses() {
       toast.success("Row added successfully!", {
         theme: "dark",
         autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
+        pauseOnHover: false,
       });
     } catch (error) {
       console.error("Error adding row:", error.message);
@@ -247,10 +239,7 @@ function RcldCourses() {
       toast.error(`Error: ${error.message}`, {
         theme: "dark",
         autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
+        pauseOnHover: false,
       });
     }
   };

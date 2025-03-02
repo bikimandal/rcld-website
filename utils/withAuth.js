@@ -5,36 +5,44 @@ import { getSessionKey } from "../lib/IndexedDb";
 const withAuth = (WrappedComponent) => {
   return (props) => {
     const router = useRouter();
-    const [isLoading, setIsLoading] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(null); // Avoid initial rendering
 
     useEffect(() => {
-      async function fetchSession() {
+      let isMounted = true; // Prevent state updates on unmounted component
+
+      async function checkAuth() {
         try {
           const data = await getSessionKey();
-          setIsLoading(false); // ✅ Set loading false before redirecting
+
+          if (!isMounted) return;
 
           if (!data) {
-            return router.replace("/admin");
+            router.replace("/admin");
+            return;
           }
 
           const session = JSON.parse(data);
-
           if (!session?.isLoggedIn) {
-            return router.replace("/admin");
+            router.replace("/admin");
+            return;
           }
+
+          setIsAuthenticated(true); // User is authenticated
         } catch (error) {
           console.error("Error fetching session:", error);
-          setIsLoading(false);
           router.replace("/admin");
         }
       }
 
-      fetchSession();
+      checkAuth();
+
+      return () => {
+        isMounted = false; // Cleanup function to avoid state update on unmounted component
+      };
     }, [router]);
 
-    if (isLoading) {
-      return <h1 className="text-white text-center">Loading...</h1>;
-    }
+    // Prevent flickering by returning null before auth check is complete
+    if (isAuthenticated === null) return null;
 
     return <WrappedComponent {...props} />;
   };

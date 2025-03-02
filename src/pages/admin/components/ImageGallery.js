@@ -7,7 +7,7 @@ import withAuth from "../../../../utils/withAuth";
 const ImageGallery = ({ refreshTrigger }) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [deleting, setDeleting] = useState(null); // Track the image being deleted
+  const [deleting, setDeleting] = useState(null);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -26,11 +26,10 @@ const ImageGallery = ({ refreshTrigger }) => {
   }, [refreshTrigger]);
 
   const handleDelete = async (imageUrl) => {
-    if (deleting) return; // Prevent spam clicking
-    setDeleting(imageUrl); // Set deleting state
+    if (deleting) return;
+    setDeleting(imageUrl);
 
     const fileName = imageUrl.split("/").pop();
-    console.log("🗑️ Deleting image:", fileName);
 
     try {
       const response = await fetch("/api/gallery/supabase.DeleteFile", {
@@ -42,26 +41,20 @@ const ImageGallery = ({ refreshTrigger }) => {
       if (!response.ok) {
         throw new Error(`Failed to delete image: ${response.statusText}`);
       }
-
-      // Remove image from state after deletion
       setImages((prevImages) => prevImages.filter((img) => img !== imageUrl));
-
-      // Show success toast
-      toast.success("✅ Image deleted successfully!", {
+      toast.success("Image deleted successfully!", {
         position: "top-right",
         autoClose: 3000,
         theme: "dark",
+        pauseOnHover: false,
       });
-
-      console.log(`✅ Image deleted successfully: ${fileName}`);
     } catch (error) {
-      console.error("❌ Error deleting image:", error);
-
-      // Show error toast
-      toast.error("❌ Failed to delete image!", {
+      console.error("Error deleting image:", error);
+      toast.error("Failed to delete image!", {
         position: "top-right",
         autoClose: 3000,
         theme: "dark",
+        pauseOnHover: false,
       });
     } finally {
       setDeleting(null); // Reset deleting state

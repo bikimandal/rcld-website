@@ -66,7 +66,11 @@ function PersonalisedCourses() {
       courses[editableRow];
 
     if (!updatedCourse) {
-      toast.error("Invalid course selection!");
+      toast.error("Invalid course selection!", {
+        theme: "dark",
+        autoClose: 3000,
+        pauseOnHover: false,
+      });
       setSaving(false);
       return;
     }
@@ -103,10 +107,7 @@ function PersonalisedCourses() {
       toast.success("Update Successful", {
         theme: "dark",
         autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
+        pauseOnHover: false,
       });
     } catch (error) {
       console.error("Error updating course:", error);
@@ -116,10 +117,7 @@ function PersonalisedCourses() {
         {
           theme: "dark",
           autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
+          pauseOnHover: false,
         }
       );
 
@@ -167,6 +165,7 @@ function PersonalisedCourses() {
       pending: {
         render: "Deleting course...",
         theme: "dark",
+        pauseOnHover: false,
       },
       success: {
         render({ data }) {
@@ -174,6 +173,7 @@ function PersonalisedCourses() {
         },
         theme: "dark",
         autoClose: 3000,
+        pauseOnHover: false,
       },
       error: {
         render({ data }) {
@@ -181,6 +181,7 @@ function PersonalisedCourses() {
         },
         theme: "dark",
         autoClose: 3000,
+        pauseOnHover: false,
       },
     });
 
@@ -195,14 +196,10 @@ function PersonalisedCourses() {
   const handleRefresh = () => {
     refreshData();
     toast.success("Data Refreshed!", {
+      theme: "dark",
       position: "top-right",
       autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
+      pauseOnHover: false,
     });
   };
 
@@ -247,10 +244,7 @@ function PersonalisedCourses() {
       toast.success("Row added successfully!", {
         theme: "dark",
         autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
+        pauseOnHover: false,
       });
     } catch (error) {
       console.error("Error adding row:", error.message);
@@ -259,10 +253,7 @@ function PersonalisedCourses() {
       toast.error(`Error: ${error.message}`, {
         theme: "dark",
         autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
+        pauseOnHover: false,
       });
     }
   };

@@ -49,11 +49,7 @@ function Dashboard() {
           toast(`🦄 Welcome ${displayName}!`, {
             position: "top-right",
             autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
+            pauseOnHover: false,
             theme: "dark",
           });
 

@@ -29,7 +29,11 @@ const ContactTable = () => {
       }
     } catch (error) {
       console.error("Error fetching contacts:", error);
-      toast.error("Failed to fetch contacts. Try again!", { autoClose: 2000 });
+      toast.error("Failed to fetch contacts. Try again!", {
+        theme: "dark",
+        autoClose: 2000,
+        pauseOnHover: false,
+      });
     } finally {
       setIsPageLoading(false);
     }
@@ -43,12 +47,14 @@ const ContactTable = () => {
         theme: "dark",
         autoClose: 2000,
         position: "top-right",
+        pauseOnHover: false,
       });
     } catch (error) {
       toast.error("Failed to refresh data!", {
         theme: "dark",
         autoClose: 2000,
         position: "top-right",
+        pauseOnHover: false,
       });
     }
     setRefreshing(false);
@@ -75,7 +81,11 @@ const ContactTable = () => {
       (contact) => contact.id === editableRow
     );
     if (!updatedContact) {
-      toast.error("Invalid contact selection!");
+      toast.error("Invalid contact selection!", {
+        theme: "dark",
+        pauseOnHover: false,
+        autoClose: 3000,
+      });
       setSaving(false);
       return;
     }
@@ -94,6 +104,7 @@ const ContactTable = () => {
       toast.success("Update Successful", {
         theme: "dark",
         autoClose: 3000,
+        pauseOnHover: false,
       });
     } catch (error) {
       console.error("Error updating contact:", error);
@@ -102,6 +113,7 @@ const ContactTable = () => {
         {
           theme: "dark",
           autoClose: 5000,
+          pauseOnHover: false,
         }
       );
       setSaving(false);

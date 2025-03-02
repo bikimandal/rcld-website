@@ -16,23 +16,29 @@ export default function AdminLogin() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function checkSession() {
+    let isMounted = true;
+
+    const checkSession = async () => {
       try {
         const data = await getSessionKey();
-        if (!data) return;
+        if (!isMounted || !data) return;
 
         const session = JSON.parse(data);
 
         if (session?.isLoggedIn) {
-          router.push("/admin/dashboard");
+          router.replace("/admin/dashboard"); // `replace` avoids history clutter
         }
       } catch (error) {
         console.error("Error fetching session:", error);
       }
-    }
+    };
 
     checkSession();
-  }, [router]);
+
+    return () => {
+      isMounted = false; // Cleanup to avoid state updates on unmounted component
+    };
+  }, []);
 
   const handleChange = (e) => {
     setCredentials((prev) => ({
@@ -47,7 +53,11 @@ export default function AdminLogin() {
 
     if (!credentials.email || !credentials.password) {
       setError("Please enter both email and password.");
-      toast.error("Missing credentials!", { theme: "dark", autoClose: 4000 });
+      toast.error("Missing credentials!", {
+        theme: "dark",
+        autoClose: 4000,
+        pauseOnHover: false,
+      });
       setLoading(false);
       return;
     }
@@ -69,11 +79,11 @@ export default function AdminLogin() {
             token: data.session.access_token,
           })
         );
-        console.log("saved token");
 
         toast.success("Login successful! Redirecting...", {
           theme: "dark",
           autoClose: 2000,
+          pauseOnHover: false,
         });
 
         setTimeout(async () => {
@@ -84,6 +94,7 @@ export default function AdminLogin() {
         toast.error(data.error || "Invalid credentials!", {
           theme: "dark",
           autoClose: 4000,
+          pauseOnHover: false,
         });
 
         localStorage.removeItem("SessionData");
@@ -93,6 +104,7 @@ export default function AdminLogin() {
       toast.error("Network error! Please check your connection.", {
         theme: "dark",
         autoClose: 4000,
+        pauseOnHover: false,
       });
     } finally {
       setLoading(false);
