@@ -1,5 +1,11 @@
 import { useRouter } from "next/router";
-import { FiBookOpen, FiImage, FiSettings, FiShare2 } from "react-icons/fi";
+import {
+  FiBookOpen,
+  FiImage,
+  FiSettings,
+  FiShare2,
+  FiVolume2,
+} from "react-icons/fi";
 import withAuth from "../../../utils/withAuth";
 import NavBar from "@/components/NavBar";
 import { useState, useEffect } from "react";
@@ -27,7 +33,11 @@ function Dashboard() {
       path: "/admin/socialmedia",
     },
     { name: "Gallery", icon: <FiImage />, path: "/admin/gallery" },
-    { name: "Settings", icon: <FiSettings />, path: "/admin/settings" },
+    {
+      name: "Advertisement",
+      icon: <FiVolume2 />,
+      path: "/admin/advertisement",
+    },
   ];
 
   useEffect(() => {

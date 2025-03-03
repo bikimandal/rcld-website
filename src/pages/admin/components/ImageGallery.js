@@ -32,11 +32,14 @@ const ImageGallery = ({ refreshTrigger }) => {
     const fileName = imageUrl.split("/").pop();
 
     try {
-      const response = await fetch("/api/gallery/supabase.DeleteFile", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ filePath: fileName }),
-      });
+      const response = await fetch(
+        "/api/advertisement/supabase.addDeleteFile",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON({ filePath: fileName }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`Failed to delete image: ${response.statusText}`);
